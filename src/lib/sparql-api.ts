@@ -15,7 +15,7 @@ interface SparqlResult {
 }
 
 // 테스트용 간단한 쿼리 함수
-export const testSparqlConnection = async (): Promise<any> => {
+export const testSparqlConnection = async (): Promise<SparqlResult> => {
   const testQuery = `SELECT ?s ?p ?o WHERE { ?s ?p ?o . } LIMIT 1`;
 
   try {
@@ -106,7 +106,7 @@ export const searchBooksBySparql = async (publisher: string, limit: number = 50,
   }
 };
 
-export const searchBooksByKeyword = async (keyword: string, searchType: 'title' | 'author' | 'publisher' = 'title', limit: number = 50): Promise<Book[]> => {
+export const searchBooksByKeyword = async (keyword: string, searchType: 'title' | 'author' | 'publisher' = 'title'): Promise<Book[]> => {
   // 실제 도서 데이터를 가져오는 SPARQL 쿼리 - FILTER 없이 모든 도서 데이터 검색
   const sparqlQuery = `
     PREFIX dc: <http://purl.org/dc/elements/1.1/>
@@ -259,7 +259,7 @@ export const searchBooksByKeyword = async (keyword: string, searchType: 'title' 
 };
 
 // 디버깅을 위한 함수 - 더 간단한 스키마 확인
-export const exploreSparqlSchema = async (): Promise<any> => {
+export const exploreSparqlSchema = async (): Promise<SparqlResult> => {
   const schemaQuery = `
     PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
     

@@ -34,7 +34,7 @@ export const unifiedBookSearch = async (
     // 1단계: SPARQL LOD 검색 시도 (학술자료용)
     try {
       console.log('1단계: SPARQL LOD 검색 시도...');
-      const sparqlBooks = await searchSparql(keyword, searchType, limit);
+      const sparqlBooks = await searchSparql(keyword, searchType);
       
       // 필터링된 실제 결과가 있는지 확인
       const actualResults = sparqlBooks.filter(book => {
@@ -138,7 +138,7 @@ export const checkSearchMethodStatus = async (): Promise<{
 
   // SPARQL 상태 확인
   try {
-    await searchSparql('테스트', 'title', 1);
+    await searchSparql('테스트', 'title');
     status.sparql = true;
   } catch {
     // SPARQL 실패

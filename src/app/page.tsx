@@ -189,7 +189,7 @@ export default function HomePage() {
                 value={searchKeyword}
                 onChange={(e) => setSearchKeyword(e.target.value)}
                 placeholder={`${searchType === 'publisher' ? '발행처명' : searchType === 'title' ? '도서 제목' : '저자명'}을 입력하세요`}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-500"
                 onKeyPress={(e) => e.key === 'Enter' && handleSearch(1)}
               />
             </div>
